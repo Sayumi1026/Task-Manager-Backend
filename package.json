@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Sayumi1026/Task-Manager-Backend/issues"
   },
-  "homepage": "https://github.com/Sayumi1026/Task-Manager-Backend#readme"
+  "homepage": "https://github.com/Sayumi1026/Task-Manager-Backend#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
 }
