@@ -40,3 +40,47 @@ app.post("/api/tasks", (req, res) => {
     });
 
 });
+
+
+app.put("/api/tasks/:id", (req, res) => {
+
+    const taskId = Number(req.params.id);
+
+    const task = tasks.find((t) => t.id === taskId);
+
+    if (!task) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    task.completed = req.body.completed;
+
+    res.json({
+        message: "Task updated successfully",
+        task: task
+    });
+
+});
+
+
+app.delete("/api/tasks/:id", (req, res) => {
+
+    const taskId = Number(req.params.id);
+
+    const taskIndex = tasks.findIndex((t) => t.id === taskId);
+
+    if (taskIndex === -1) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    const deletedTask = tasks.splice(taskIndex, 1);
+
+    res.json({
+        message: "Task deleted successfully",
+        task: deletedTask[0]
+    });
+
+});
